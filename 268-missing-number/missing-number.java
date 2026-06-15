@@ -1,12 +1,17 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        int n = nums.length;
-        int a = n*(n+1)/2;
-        int b = 0;
-        for(int num : nums) {
-            b = b + num;
+        Arrays.sort(nums);
+        int l = nums.length;
+        if(l-1 == nums[l-1]){
+            return l;
         }
-        return a - b;
-
+        else{
+            for(int i = 0; i<l-1; i++){
+                if(nums[i] != nums[i+1]-1 ){
+                    return nums[i]+1;
+                }
+            }
+        }
+        return 0;
     }
 }
