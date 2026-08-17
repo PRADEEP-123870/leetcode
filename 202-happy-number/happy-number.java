@@ -1,14 +1,16 @@
 class Solution {
     public boolean isHappy(int n) {
-       while(n!=1 && n!=4){
-        int sum = 0;
-        while(n!=0){
-            int digits = n % 10;
-            sum+=digits*digits;
-             n = n / 10;
+        if(n == 1 || n == 7){
+            return true;
         }
-        n = sum;
-       }
-       return n == 1;
+        if(n <= 9){
+            return false;
+        }
+        int sum = 0;
+        while(n > 0){
+            sum += (int)Math.pow(n%10, 2);
+            n = n/10;
+        }
+        return isHappy(sum);
     }
 }
