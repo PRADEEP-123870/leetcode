@@ -1,16 +1,19 @@
 class Solution {
     public boolean isHappy(int n) {
-        if(n == 1 || n == 7){
+        if(n==1){
             return true;
         }
-        if(n <= 9){
+        else if(n==4){
             return false;
         }
-        int sum = 0;
-        while(n > 0){
-            sum += (int)Math.pow(n%10, 2);
-            n = n/10;
+        else{
+            int sum = 0;
+            while(n>0){
+                int a = n%10;
+                sum = sum + a*a;
+                n = n/10;
+            }
+            return isHappy(sum);
         }
-        return isHappy(sum);
     }
 }
